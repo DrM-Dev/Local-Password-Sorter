@@ -1,8 +1,11 @@
-#Local Password Sorter - v0.1   -    by:   Dr.M-Dev
+#Local Password Sorter   -    by:   Dr.M-Dev
+ver = 1.1
 #===================Imports
 from tkinter import *
 from tkinter import filedialog
 import ADVANCED_Password_Generator
+#update:
+from tkinter import messagebox
 
 #===================Global Constants
 PASS_GEN_WINDOW_Activation = False #False = 0 = OFF     True = 1 = ON
@@ -28,7 +31,6 @@ window.title("Local Pass Sorter  0.1")
 window.config(padx=20,pady=30)
 
 
-
 #### - ######## - ######## - ######## - ######## - ######## - ####
 #### - ######## - ######## - ######## - ######## - ######## - #### UI SETUP
 entry_box_width = 50
@@ -42,6 +44,54 @@ for child in window.winfo_children():
     child.grid_configure(padx=10, pady=15)
 
 
+#===========================================
+print('''                                                                                                                                                  
+                                                              ...::::.      ...::::::::    :.      .:.   
+  5@@@@@@@@B!    &@@@@@@@&G:        ^G&@@@&P#@@@@B~          J@@@@@@@@@G.   #@@@@@@@@@@   .@@B    7@@?   
+  G@@~::::J@@!   @@#     B@@.      :@@G::~&@@!::Y@@~         J@@~    ^@@B   #@@.           !@@J  .@@B    
+  G@@     .@@Y   @@@    5&@#       ~@@!   B@&   :@@?         J@@:     &@#   #@@BBBBBBB      P@@: #@@.    
+  7BP     .@@J   PBGGGGGB@@B       :BB^   B@&   :@@?         ~GP.     &@#   JGPYYYYYYY       &@# @@!     
+  Y&&^....?@@7   #&P     J@@:  ##  ^&&~   B@&   ^@@?         ?@@7:  :7@@P   Y@& ......       ^@@@@P      
+  P@@@@@@@@&?    &@B     ?@@:  ##  ~@@!   B@&   :@@?         ?@@@@@@@@#J    J&@@@@@@@@?       ?@@B  
+
+
+                                                             !J!:                                                                
+                                                              ^G@@&P7:                                                           
+                                         .~7YGB#&&&&&&&#BG5?~:  .Y@@@@&G^                                                        
+                                    :?P&@@@@@@@@@@@@@@@@@@@@@@@&G?J@@@@@&                                                        
+                                .!G@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@P   ...                                                 
+                              ~B@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@BG&&@@@@                                              
+                            ?&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&                                             
+                          7@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&#GYP#&J                                            
+                        .B@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@!                                                
+                       :&@@@@@@@@@@@@@@@@J7@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@P                                               
+                      .@@@@@@@@@@@@@@@@#:  ^&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@G                                              
+                      #@@@@@@@@@@@@@@&7      P@@@@@@@@@@@@@B&@@@@@@@&@@#&@@@@@@@@@@J                                             
+                     !@@@@@@@@@@@@@&?         ^#@@@@&&@@@@@@#PPGB##? B@5#@#@@@@@@@@@:                                            
+                     B@@@@@@@@@@@G~             ^B@@@&GG#@@@@@@@#~   .&#J@Y&@@@@@@@@G                                            
+                     @@@@@@@@@@~                  .?#@@@&BGPGBBJ      .#5G&J@@@@@@@@@.                                           
+                   .@@@@@@@@@7      !PB##B4^        .^JG#&&P:  ^4B###P4?!~!?@@@@@@@@^                                           
+                   .@@@@@@@@#      !4~.. .~4^                 ~4~....~4^    #@@@@@@@^   .~                                      
+               ~BJ :@@@@@@@@BJYYYYYYJJJJYJJJJJJJ?!.     .!?JYYYJJYYYJJJYYYYY&@@@@@@@P7: .G#?.                                   
+            .?BG^  &@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@?...5@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@?  .Y#5:                                 
+          :5BJ.    @@@@@@@@@&PJJJJJJ????JJJJ5&@@@@@@@@@@@@@@@GYJJ??????JJJJJYB@@@@@@@@@Y     7BB~                               
+        !GG~       .YGG@@@@B        ...       G@@@@@@@@@@@@@:     .::.        !@@@@&GP7        ^G#?                             
+     .JB5:             &@@@Y      4P..P@G.    7@@@@@@@@@@@@&    ^:^B@@@P.      @@@@~             .J#5.                          
+     J@J               &@@@5     G@@4Y&@@&    ?@@@@?::^#@@@&   ~@4^B@@@@#     .@@@@~              ^#&:                          
+      .5#J.            &@@@5     ?@@@@@@@P    7@@@@.   ?@@@&   .@@@@@@@@Y     .@@@@~           .J#P:                            
+        .?#P:          #@@@G      .JGBBY:     5@@@&    ^@@@@.    ?B&&#P^      :@@@@~         ^PBJ.                              
+           ~BB!        7@@@@5.              :P@@@@J     #@@@&!.             .!&@@@&        7BG~                                 
+             :5#J.      ?@@@@@@@@@@@@@@@@@@@@@@@@J      .#@@@@@@&&&&&&&@&&@@@@@@@B.     :5BY.                                   
+               .J#!      .7G&&@@@@@@@@@@@@@@&&G7.         ^5#&@@@@@@@@@@@@@@@&BJ:       7!                                      
+
+
+ ''')
+
+print(f"******** WELCOME TO Local Password Sorter {ver}    -   By: Dr.m DEV *********")
+#==========================================================================================================
+#==========================================================================================================
+#==========================================================================================================
+#==========================================================================================================
 #======================Input UIs
 canvas = Canvas(width=500, height=300)
 #
@@ -320,26 +370,27 @@ def final_document_save():
                        f"Password:  | {pass_OUTPUT}\n"
                        "=================================\n"
                        )
-        ###############
-        file_saved_win = Tk()
-        file_saved_win.maxsize(er_w_width + 40, er_w_height)
-        file_saved_win.minsize(er_w_width + 40, er_w_height)
-        file_saved_win.title("💾FILE SAVED!")
-        file_saved_win.config(padx=er_w_padx, pady=er_w_pady)
+        ###############Old pop-up setup
+        # file_saved_win = Tk()
+        # file_saved_win.maxsize(er_w_width + 40, er_w_height)
+        # file_saved_win.minsize(er_w_width + 40, er_w_height)
+        # file_saved_win.title("💾FILE SAVED!")
+        # file_saved_win.config(padx=er_w_padx, pady=er_w_pady)
+        # #
+        # file_saved_l = Label(file_saved_win, text="Your info & pass were locally saved in:", font=er_w_font)
+        # file_saved_l.place(x=er_w_placex, y=er_w_placey-22)
+        # #
+        # file_saved_entry = Entry(file_saved_win, width=er_w_height-100)
+        # file_saved_entry.insert(END, f"{path_OUTPUT}")
+        # file_saved_entry.place(x=er_w_placex, y=er_w_placey)
         #
-        file_saved_l = Label(file_saved_win, text="Your info & pass were locally saved in:", font=er_w_font)
-        file_saved_l.place(x=er_w_placex, y=er_w_placey-22)
-        #
-        file_saved_entry = Entry(file_saved_win, width=er_w_height-100)
-        file_saved_entry.insert(END, f"{path_OUTPUT}")
-        file_saved_entry.place(x=er_w_placex, y=er_w_placey)
-
-        # --X--X--X--#
-        def closing_saved_win():
-            file_saved_win.destroy()
-
-        ####
-        file_saved_win.protocol("WM_DELETE_WINDOW", closing_saved_win)
+        # # --X--X--X--#
+        # def closing_saved_win():
+        #     file_saved_win.destroy()
+        # ####
+        # file_saved_win.protocol("WM_DELETE_WINDOW", closing_saved_win)
+        ###############NEW pop-up setup (1.1)
+        messagebox.showinfo(title="💾FILE SAVED!", message=f"Your info & pass were locally saved in:\n{path_OUTPUT}")
 
     #==========================================================================
     #======================================ERRORS:
