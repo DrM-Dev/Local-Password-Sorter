@@ -396,97 +396,112 @@ def final_document_save():
     #======================================ERRORS:
     #============================================
     if not got_website and not error_window_online:  # WEBSITE-ERROR:
-        #++++
-        error_window_online = True
-        #++++
-        warning_win_web = Tk()
-        warning_win_web.maxsize(er_w_width, er_w_height)
-        warning_win_web.minsize(er_w_width, er_w_height)
-        warning_win_web.title("⚠️ERROR")
-        warning_win_web.config(padx=er_w_padx, pady=er_w_pady)
-        #----
-        website_warning_l = Label(warning_win_web, text="Please give a proper website name", font=er_w_font)
-        website_warning_l.place(x=er_w_placex, y=er_w_placey)
-        # --X--X--X--#
-        def closing_web_error():
-            warning_win_web.destroy()
-        ####
-        warning_win_web.protocol("WM_DELETE_WINDOW", closing_web_error)
+        # old pop-up
+        # #++++
+        # error_window_online = True
+        # #++++
+        # warning_win_web = Tk()
+        # warning_win_web.maxsize(er_w_width, er_w_height)
+        # warning_win_web.minsize(er_w_width, er_w_height)
+        # warning_win_web.title("⚠️ERROR")
+        # warning_win_web.config(padx=er_w_padx, pady=er_w_pady)
+        # #----
+        # website_warning_l = Label(warning_win_web, text="Please give a proper website name", font=er_w_font)
+        # website_warning_l.place(x=er_w_placex, y=er_w_placey)
+        # # --X--X--X--#
+        # def closing_web_error():
+        #     warning_win_web.destroy()
+        # ####
+        # warning_win_web.protocol("WM_DELETE_WINDOW", closing_web_error)
+        ###############NEW pop-up setup (1.1)
+        messagebox.showerror(title="⚠️ERROR!", message="Please give a proper website name")
 
     #==========================================
     if not got_email and not error_window_online:  # EMAIL-ERROR:
-        #++++
-        error_window_online = True
-        #++++
-        warning_win_email = Tk()
-        warning_win_email.maxsize(er_w_width, er_w_height)
-        warning_win_email.minsize(er_w_width, er_w_height)
-        warning_win_email.title("⚠️ERROR")
-        warning_win_email.config(padx=er_w_padx, pady=er_w_pady)
-        #
-        website_warning_l = Label(warning_win_email, text="Please give a proper Email", font=er_w_font)
-        website_warning_l.place(x=er_w_placex, y=er_w_placey)
-        # --X--X--X--#
-        def closing_email_error():
-            warning_win_email.destroy()
-        ####
-        warning_win_email.protocol("WM_DELETE_WINDOW", closing_email_error)
+        # old pop-up
+        # #++++
+        # error_window_online = True
+        # #++++
+        # warning_win_email = Tk()
+        # warning_win_email.maxsize(er_w_width, er_w_height)
+        # warning_win_email.minsize(er_w_width, er_w_height)
+        # warning_win_email.title("⚠️ERROR")
+        # warning_win_email.config(padx=er_w_padx, pady=er_w_pady)
+        # #
+        # website_warning_l = Label(warning_win_email, text="Please give a proper Email", font=er_w_font)
+        # website_warning_l.place(x=er_w_placex, y=er_w_placey)
+        # # --X--X--X--#
+        # def closing_email_error():
+        #     warning_win_email.destroy()
+        # ####
+        # warning_win_email.protocol("WM_DELETE_WINDOW", closing_email_error)
+        ###############NEW pop-up setup (1.1)
+        messagebox.showerror(title="⚠️ERROR!", message="Please give a proper Email")
 
     #==========================================
     if not got_pass and not error_window_online and len(str(pass_OUTPUT)) < 4:
-        # ++++
-        error_window_online = True
-        # ++++
-        warning_win_pass = Tk()
-        warning_win_pass.maxsize(er_w_width, er_w_height)
-        warning_win_pass.minsize(er_w_width, er_w_height)
-        warning_win_pass.title("⚠️ERROR")
-        warning_win_pass.config(padx=er_w_padx, pady=er_w_pady)
-        #
-        website_warning_l = Label(warning_win_pass, text="Please give a LONGER Password", font=er_w_font)
-        website_warning_l.place(x=er_w_placex, y=er_w_placey)
-        # --X--X--X--#
-        def closing_pass_error():
-            warning_win_pass.destroy()
-        ####
-        warning_win_pass.protocol("WM_DELETE_WINDOW", closing_pass_error)
+        # old pop-up
+        # # ++++
+        # error_window_online = True
+        # # ++++
+        # warning_win_pass = Tk()
+        # warning_win_pass.maxsize(er_w_width, er_w_height)
+        # warning_win_pass.minsize(er_w_width, er_w_height)
+        # warning_win_pass.title("⚠️ERROR")
+        # warning_win_pass.config(padx=er_w_padx, pady=er_w_pady)
+        # #
+        # website_warning_l = Label(warning_win_pass, text="Please give a LONGER Password", font=er_w_font)
+        # website_warning_l.place(x=er_w_placex, y=er_w_placey)
+        # # --X--X--X--#
+        # def closing_pass_error():
+        #     warning_win_pass.destroy()
+        # ####
+        # warning_win_pass.protocol("WM_DELETE_WINDOW", closing_pass_error)
+        ###############NEW pop-up setup (1.1)
+        messagebox.showerror(title="⚠️ERROR!", message="Please give a LONGER Password")
     # +++++++++++++++++++++++++ #
     if not got_pass and not error_window_online:
-        #++++
-        error_window_online = True
-        #++++
-        warning_win_pass = Tk()
-        warning_win_pass.maxsize(er_w_width, er_w_height)
-        warning_win_pass.minsize(er_w_width, er_w_height)
-        warning_win_pass.title("⚠️ERROR")
-        warning_win_pass.config(padx=er_w_padx, pady=er_w_pady)
-        #
-        website_warning_l = Label(warning_win_pass, text="Please give a proper Password", font=er_w_font)
-        website_warning_l.place(x=er_w_placex, y=er_w_placey)
-        # --X--X--X--#
-        def closing_pass_error():
-            warning_win_pass.destroy()
-        ####
-        warning_win_pass.protocol("WM_DELETE_WINDOW", closing_pass_error)
+        # old pop-up
+        # #++++
+        # error_window_online = True
+        # #++++
+        # warning_win_pass = Tk()
+        # warning_win_pass.maxsize(er_w_width, er_w_height)
+        # warning_win_pass.minsize(er_w_width, er_w_height)
+        # warning_win_pass.title("⚠️ERROR")
+        # warning_win_pass.config(padx=er_w_padx, pady=er_w_pady)
+        # #
+        # website_warning_l = Label(warning_win_pass, text="Please give a proper Password", font=er_w_font)
+        # website_warning_l.place(x=er_w_placex, y=er_w_placey)
+        # # --X--X--X--#
+        # def closing_pass_error():
+        #     warning_win_pass.destroy()
+        # ####
+        # warning_win_pass.protocol("WM_DELETE_WINDOW", closing_pass_error)
+        ###############NEW pop-up setup (1.1)
+        messagebox.showerror(title="⚠️ERROR!", message="Please give a proper Password")
 
     # ==========================================
     if not is_path_ready and not error_window_online:
-        #++++
-        # error_window_online = True
-        #++++
-        warning_win_path = Tk()
-        warning_win_path.maxsize(er_w_width, er_w_height)
-        warning_win_path.minsize(er_w_width, er_w_height)
-        warning_win_path.title("⚠️ERROR")
-        warning_win_path.config(padx=er_w_padx, pady=er_w_pady)
-        #
-        website_warning_l = Label(warning_win_path, text="Please select a saving folder", font=er_w_font)
-        website_warning_l.place(x=er_w_placex, y=er_w_placey)
-        # --X--X--X--#
-        def closing_path_error():
-            warning_win_path.destroy()
-        ####
-        warning_win_path.protocol("WM_DELETE_WINDOW", closing_path_error)
+        # old pop-up
+        # #++++
+        # # error_window_online = True
+        # #++++
+        # warning_win_path = Tk()
+        # warning_win_path.maxsize(er_w_width, er_w_height)
+        # warning_win_path.minsize(er_w_width, er_w_height)
+        # warning_win_path.title("⚠️ERROR")
+        # warning_win_path.config(padx=er_w_padx, pady=er_w_pady)
+        # #
+        # website_warning_l = Label(warning_win_path, text="Please select a saving folder", font=er_w_font)
+        # website_warning_l.place(x=er_w_placex, y=er_w_placey)
+        # # --X--X--X--#
+        # def closing_path_error():
+        #     warning_win_path.destroy()
+        # ####
+        # warning_win_path.protocol("WM_DELETE_WINDOW", closing_path_error)
+        ###############NEW pop-up setup (1.1)
+        messagebox.showerror(title="⚠️ERROR!", message="Please select a saving folder")
 
 
 #==========================SAVE-BUTTON:
