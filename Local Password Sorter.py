@@ -391,6 +391,7 @@ def final_document_save():
         # file_saved_win.protocol("WM_DELETE_WINDOW", closing_saved_win)
         ###############NEW pop-up setup (1.1)
         messagebox.showinfo(title="💾FILE SAVED!", message=f"Your info & pass were locally saved in:\n{path_OUTPUT}")
+        print("check-save")
 
     #==========================================================================
     #======================================ERRORS:
@@ -398,7 +399,7 @@ def final_document_save():
     if not got_website and not error_window_online:  # WEBSITE-ERROR:
         # old pop-up
         # #++++
-        # error_window_online = True
+        error_window_online = True
         # #++++
         # warning_win_web = Tk()
         # warning_win_web.maxsize(er_w_width, er_w_height)
@@ -415,12 +416,13 @@ def final_document_save():
         # warning_win_web.protocol("WM_DELETE_WINDOW", closing_web_error)
         ###############NEW pop-up setup (1.1)
         messagebox.showerror(title="⚠️ERROR!", message="Please give a proper website name")
+        print("check1")
 
     #==========================================
     if not got_email and not error_window_online:  # EMAIL-ERROR:
         # old pop-up
         # #++++
-        # error_window_online = True
+        error_window_online = True
         # #++++
         # warning_win_email = Tk()
         # warning_win_email.maxsize(er_w_width, er_w_height)
@@ -437,12 +439,13 @@ def final_document_save():
         # warning_win_email.protocol("WM_DELETE_WINDOW", closing_email_error)
         ###############NEW pop-up setup (1.1)
         messagebox.showerror(title="⚠️ERROR!", message="Please give a proper Email")
+        print("check2")
 
     #==========================================
     if not got_pass and not error_window_online and len(str(pass_OUTPUT)) < 4:
         # old pop-up
         # # ++++
-        # error_window_online = True
+        error_window_online = True
         # # ++++
         # warning_win_pass = Tk()
         # warning_win_pass.maxsize(er_w_width, er_w_height)
@@ -459,11 +462,12 @@ def final_document_save():
         # warning_win_pass.protocol("WM_DELETE_WINDOW", closing_pass_error)
         ###############NEW pop-up setup (1.1)
         messagebox.showerror(title="⚠️ERROR!", message="Please give a LONGER Password")
+        print("check3")
     # +++++++++++++++++++++++++ #
     if not got_pass and not error_window_online:
         # old pop-up
         # #++++
-        # error_window_online = True
+        error_window_online = True
         # #++++
         # warning_win_pass = Tk()
         # warning_win_pass.maxsize(er_w_width, er_w_height)
@@ -480,12 +484,13 @@ def final_document_save():
         # warning_win_pass.protocol("WM_DELETE_WINDOW", closing_pass_error)
         ###############NEW pop-up setup (1.1)
         messagebox.showerror(title="⚠️ERROR!", message="Please give a proper Password")
+        print("check3B")
 
     # ==========================================
     if not is_path_ready and not error_window_online:
         # old pop-up
         # #++++
-        # # error_window_online = True
+        error_window_online = True
         # #++++
         # warning_win_path = Tk()
         # warning_win_path.maxsize(er_w_width, er_w_height)
@@ -502,6 +507,7 @@ def final_document_save():
         # warning_win_path.protocol("WM_DELETE_WINDOW", closing_path_error)
         ###############NEW pop-up setup (1.1)
         messagebox.showerror(title="⚠️ERROR!", message="Please select a saving folder")
+        print("check4")
 
 
 #==========================SAVE-BUTTON:
