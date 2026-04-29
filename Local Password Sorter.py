@@ -366,10 +366,12 @@ def final_document_save():
                                                                          f"\nPassword: {pass_OUTPUT}"
                                                                          f"\n\nin: {path_OUTPUT}?")
         ###############################
-        if confirm_save:
+        if confirm_save == "yes":
             website_raw_name = website_OUTPUT.replace("@","")
             file_name_refine_1 = website_raw_name.replace(".com", "")
+            
             ####
+            messagebox.showinfo(title="💾FILE SAVED!", message=f"Your info & pass were locally saved in:\n{path_OUTPUT}")
             with open(fr"{path_OUTPUT}/{file_name_refine_1}.txt", mode="w" ) as file:
                 file.write(f"================================\n"
                            f"{website_OUTPUT}-Account info save:\n\n"
@@ -377,8 +379,10 @@ def final_document_save():
                            f"Password:  | {pass_OUTPUT}\n"
                            "=================================\n"
                            )
-        else:
+            #---------------------
+        elif confirm_save == "no":
             messagebox.showinfo(title="Return to editing", message="No info were saved, returning to the editing window")
+
         ###############################
         ###############Old pop-up setup
         # file_saved_win = Tk()
@@ -400,8 +404,9 @@ def final_document_save():
         # ####
         # file_saved_win.protocol("WM_DELETE_WINDOW", closing_saved_win)
         ###############NEW pop-up setup (1.1)
-        messagebox.showinfo(title="💾FILE SAVED!", message=f"Your info & pass were locally saved in:\n{path_OUTPUT}")
+        #debug:
         print("check-save")
+        print(f"{confirm_save}")
 
     #==========================================================================
     #======================================ERRORS:
