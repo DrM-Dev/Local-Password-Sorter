@@ -369,10 +369,10 @@ def final_document_save():
         if confirm_save == "yes":
             website_raw_name = website_OUTPUT.replace("@","")
             file_name_refine_1 = website_raw_name.replace(".com", "")
-            
+            file_name_refine_2 = file_name_refine_1.replace("Ex:", "")
             ####
             messagebox.showinfo(title="💾FILE SAVED!", message=f"Your info & pass were locally saved in:\n{path_OUTPUT}")
-            with open(fr"{path_OUTPUT}/{file_name_refine_1}.txt", mode="w" ) as file:
+            with open(fr"{path_OUTPUT}/{file_name_refine_2}.txt", mode="w" ) as file:
                 file.write(f"================================\n"
                            f"{website_OUTPUT}-Account info save:\n\n"
                            f"Email:     | {email_OUTPUT}\n"
@@ -405,8 +405,8 @@ def final_document_save():
         # file_saved_win.protocol("WM_DELETE_WINDOW", closing_saved_win)
         ###############NEW pop-up setup (1.1)
         #debug:
-        print("check-save")
-        print(f"{confirm_save}")
+        # print("check-save")
+        # print(f"{confirm_save}")
 
     #==========================================================================
     #======================================ERRORS:
