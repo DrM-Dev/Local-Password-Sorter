@@ -360,16 +360,26 @@ def final_document_save():
 
     ## -- ----------------------------- -- ##
     if got_website and got_email and got_pass and is_path_ready: #IF ALL IS TRUE
-        website_raw_name = website_OUTPUT.replace("@","")
-        file_name_refine_1 = website_raw_name.replace(".com", "")
-        ####
-        with open(fr"{path_OUTPUT}/{file_name_refine_1}.txt", mode="w" ) as file:
-            file.write(f"================================\n"
-                       f"{website_OUTPUT}-Account info save:\n\n"
-                       f"Email:     | {email_OUTPUT}\n"
-                       f"Password:  | {pass_OUTPUT}\n"
-                       "=================================\n"
-                       )
+        ###############################
+        confirm_save = messagebox.askquestion(title="Save Info?", message=f"Confirm that you want to save the info of {website_OUTPUT}-account"
+                                                                         f"\nwhich is\nEmail: {email_OUTPUT}"
+                                                                         f"\nPassword: {pass_OUTPUT}"
+                                                                         f"\n\nin: {path_OUTPUT}?")
+        ###############################
+        if confirm_save:
+            website_raw_name = website_OUTPUT.replace("@","")
+            file_name_refine_1 = website_raw_name.replace(".com", "")
+            ####
+            with open(fr"{path_OUTPUT}/{file_name_refine_1}.txt", mode="w" ) as file:
+                file.write(f"================================\n"
+                           f"{website_OUTPUT}-Account info save:\n\n"
+                           f"Email:     | {email_OUTPUT}\n"
+                           f"Password:  | {pass_OUTPUT}\n"
+                           "=================================\n"
+                           )
+        else:
+            messagebox.showinfo(title="Return to editing", message="No info were saved, returning to the editing window")
+        ###############################
         ###############Old pop-up setup
         # file_saved_win = Tk()
         # file_saved_win.maxsize(er_w_width + 40, er_w_height)
