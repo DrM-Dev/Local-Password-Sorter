@@ -490,7 +490,7 @@ def final_document_save():
     if not is_path_ready and not error_window_online:
         # old pop-up
         # #++++
-        error_window_online = True
+        # error_window_online = True #you can activate this if you want to attach other error pop-ups in the future
         # #++++
         # warning_win_path = Tk()
         # warning_win_path.maxsize(er_w_width, er_w_height)
