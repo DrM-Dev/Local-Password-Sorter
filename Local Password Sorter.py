@@ -1,8 +1,11 @@
-#Local Password Sorter - v0.1   -    by:   Dr.M-Dev
+#Local Password Sorter   -    by:   Dr.M-Dev
+ver = 1.1
 #===================Imports
 from tkinter import *
 from tkinter import filedialog
 import ADVANCED_Password_Generator
+#update:
+from tkinter import messagebox
 
 #===================Global Constants
 PASS_GEN_WINDOW_Activation = False #False = 0 = OFF     True = 1 = ON
@@ -28,7 +31,6 @@ window.title("Local Pass Sorter  0.1")
 window.config(padx=20,pady=30)
 
 
-
 #### - ######## - ######## - ######## - ######## - ######## - ####
 #### - ######## - ######## - ######## - ######## - ######## - #### UI SETUP
 entry_box_width = 50
@@ -42,6 +44,54 @@ for child in window.winfo_children():
     child.grid_configure(padx=10, pady=15)
 
 
+#===========================================
+print('''                                                                                                                                                  
+                                                              ...::::.      ...::::::::    :.      .:.   
+  5@@@@@@@@B!    &@@@@@@@&G:        ^G&@@@&P#@@@@B~          J@@@@@@@@@G.   #@@@@@@@@@@   .@@B    7@@?   
+  G@@~::::J@@!   @@#     B@@.      :@@G::~&@@!::Y@@~         J@@~    ^@@B   #@@.           !@@J  .@@B    
+  G@@     .@@Y   @@@    5&@#       ~@@!   B@&   :@@?         J@@:     &@#   #@@BBBBBBB      P@@: #@@.    
+  7BP     .@@J   PBGGGGGB@@B       :BB^   B@&   :@@?         ~GP.     &@#   JGPYYYYYYY       &@# @@!     
+  Y&&^....?@@7   #&P     J@@:  ##  ^&&~   B@&   ^@@?         ?@@7:  :7@@P   Y@& ......       ^@@@@P      
+  P@@@@@@@@&?    &@B     ?@@:  ##  ~@@!   B@&   :@@?         ?@@@@@@@@#J    J&@@@@@@@@?       ?@@B  
+
+
+                                                             !J!:                                                                
+                                                              ^G@@&P7:                                                           
+                                         .~7YGB#&&&&&&&#BG5?~:  .Y@@@@&G^                                                        
+                                    :?P&@@@@@@@@@@@@@@@@@@@@@@@&G?J@@@@@&                                                        
+                                .!G@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@P   ...                                                 
+                              ~B@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@BG&&@@@@                                              
+                            ?&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&                                             
+                          7@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&#GYP#&J                                            
+                        .B@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@!                                                
+                       :&@@@@@@@@@@@@@@@@J7@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@P                                               
+                      .@@@@@@@@@@@@@@@@#:  ^&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@G                                              
+                      #@@@@@@@@@@@@@@&7      P@@@@@@@@@@@@@B&@@@@@@@&@@#&@@@@@@@@@@J                                             
+                     !@@@@@@@@@@@@@&?         ^#@@@@&&@@@@@@#PPGB##? B@5#@#@@@@@@@@@:                                            
+                     B@@@@@@@@@@@G~             ^B@@@&GG#@@@@@@@#~   .&#J@Y&@@@@@@@@G                                            
+                     @@@@@@@@@@~                  .?#@@@&BGPGBBJ      .#5G&J@@@@@@@@@.                                           
+                   .@@@@@@@@@7      !PB##B4^        .^JG#&&P:  ^4B###P4?!~!?@@@@@@@@^                                           
+                   .@@@@@@@@#      !4~.. .~4^                 ~4~....~4^    #@@@@@@@^   .~                                      
+               ~BJ :@@@@@@@@BJYYYYYYJJJJYJJJJJJJ?!.     .!?JYYYJJYYYJJJYYYYY&@@@@@@@P7: .G#?.                                   
+            .?BG^  &@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@?...5@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@?  .Y#5:                                 
+          :5BJ.    @@@@@@@@@&PJJJJJJ????JJJJ5&@@@@@@@@@@@@@@@GYJJ??????JJJJJYB@@@@@@@@@Y     7BB~                               
+        !GG~       .YGG@@@@B        ...       G@@@@@@@@@@@@@:     .::.        !@@@@&GP7        ^G#?                             
+     .JB5:             &@@@Y      4P..P@G.    7@@@@@@@@@@@@&    ^:^B@@@P.      @@@@~             .J#5.                          
+     J@J               &@@@5     G@@4Y&@@&    ?@@@@?::^#@@@&   ~@4^B@@@@#     .@@@@~              ^#&:                          
+      .5#J.            &@@@5     ?@@@@@@@P    7@@@@.   ?@@@&   .@@@@@@@@Y     .@@@@~           .J#P:                            
+        .?#P:          #@@@G      .JGBBY:     5@@@&    ^@@@@.    ?B&&#P^      :@@@@~         ^PBJ.                              
+           ~BB!        7@@@@5.              :P@@@@J     #@@@&!.             .!&@@@&        7BG~                                 
+             :5#J.      ?@@@@@@@@@@@@@@@@@@@@@@@@J      .#@@@@@@&&&&&&&@&&@@@@@@@B.     :5BY.                                   
+               .J#!      .7G&&@@@@@@@@@@@@@@&&G7.         ^5#&@@@@@@@@@@@@@@@&BJ:       7!                                      
+
+
+ ''')
+
+print(f"******** WELCOME TO Local Password Sorter {ver}    -   By: Dr.m DEV *********")
+#==========================================================================================================
+#==========================================================================================================
+#==========================================================================================================
+#==========================================================================================================
 #======================Input UIs
 canvas = Canvas(width=500, height=300)
 #
@@ -320,122 +370,144 @@ def final_document_save():
                        f"Password:  | {pass_OUTPUT}\n"
                        "=================================\n"
                        )
-        ###############
-        file_saved_win = Tk()
-        file_saved_win.maxsize(er_w_width + 40, er_w_height)
-        file_saved_win.minsize(er_w_width + 40, er_w_height)
-        file_saved_win.title("💾FILE SAVED!")
-        file_saved_win.config(padx=er_w_padx, pady=er_w_pady)
+        ###############Old pop-up setup
+        # file_saved_win = Tk()
+        # file_saved_win.maxsize(er_w_width + 40, er_w_height)
+        # file_saved_win.minsize(er_w_width + 40, er_w_height)
+        # file_saved_win.title("💾FILE SAVED!")
+        # file_saved_win.config(padx=er_w_padx, pady=er_w_pady)
+        # #
+        # file_saved_l = Label(file_saved_win, text="Your info & pass were locally saved in:", font=er_w_font)
+        # file_saved_l.place(x=er_w_placex, y=er_w_placey-22)
+        # #
+        # file_saved_entry = Entry(file_saved_win, width=er_w_height-100)
+        # file_saved_entry.insert(END, f"{path_OUTPUT}")
+        # file_saved_entry.place(x=er_w_placex, y=er_w_placey)
         #
-        file_saved_l = Label(file_saved_win, text="Your info & pass were locally saved in:", font=er_w_font)
-        file_saved_l.place(x=er_w_placex, y=er_w_placey-22)
-        #
-        file_saved_entry = Entry(file_saved_win, width=er_w_height-100)
-        file_saved_entry.insert(END, f"{path_OUTPUT}")
-        file_saved_entry.place(x=er_w_placex, y=er_w_placey)
-
-        # --X--X--X--#
-        def closing_saved_win():
-            file_saved_win.destroy()
-
-        ####
-        file_saved_win.protocol("WM_DELETE_WINDOW", closing_saved_win)
+        # # --X--X--X--#
+        # def closing_saved_win():
+        #     file_saved_win.destroy()
+        # ####
+        # file_saved_win.protocol("WM_DELETE_WINDOW", closing_saved_win)
+        ###############NEW pop-up setup (1.1)
+        messagebox.showinfo(title="💾FILE SAVED!", message=f"Your info & pass were locally saved in:\n{path_OUTPUT}")
+        print("check-save")
 
     #==========================================================================
     #======================================ERRORS:
     #============================================
     if not got_website and not error_window_online:  # WEBSITE-ERROR:
-        #++++
+        # old pop-up
+        # #++++
         error_window_online = True
-        #++++
-        warning_win_web = Tk()
-        warning_win_web.maxsize(er_w_width, er_w_height)
-        warning_win_web.minsize(er_w_width, er_w_height)
-        warning_win_web.title("⚠️ERROR")
-        warning_win_web.config(padx=er_w_padx, pady=er_w_pady)
-        #----
-        website_warning_l = Label(warning_win_web, text="Please give a proper website name", font=er_w_font)
-        website_warning_l.place(x=er_w_placex, y=er_w_placey)
-        # --X--X--X--#
-        def closing_web_error():
-            warning_win_web.destroy()
-        ####
-        warning_win_web.protocol("WM_DELETE_WINDOW", closing_web_error)
+        # #++++
+        # warning_win_web = Tk()
+        # warning_win_web.maxsize(er_w_width, er_w_height)
+        # warning_win_web.minsize(er_w_width, er_w_height)
+        # warning_win_web.title("⚠️ERROR")
+        # warning_win_web.config(padx=er_w_padx, pady=er_w_pady)
+        # #----
+        # website_warning_l = Label(warning_win_web, text="Please give a proper website name", font=er_w_font)
+        # website_warning_l.place(x=er_w_placex, y=er_w_placey)
+        # # --X--X--X--#
+        # def closing_web_error():
+        #     warning_win_web.destroy()
+        # ####
+        # warning_win_web.protocol("WM_DELETE_WINDOW", closing_web_error)
+        ###############NEW pop-up setup (1.1)
+        messagebox.showerror(title="⚠️ERROR!", message="Please give a proper website name")
+        print("check1")
 
     #==========================================
     if not got_email and not error_window_online:  # EMAIL-ERROR:
-        #++++
+        # old pop-up
+        # #++++
         error_window_online = True
-        #++++
-        warning_win_email = Tk()
-        warning_win_email.maxsize(er_w_width, er_w_height)
-        warning_win_email.minsize(er_w_width, er_w_height)
-        warning_win_email.title("⚠️ERROR")
-        warning_win_email.config(padx=er_w_padx, pady=er_w_pady)
-        #
-        website_warning_l = Label(warning_win_email, text="Please give a proper Email", font=er_w_font)
-        website_warning_l.place(x=er_w_placex, y=er_w_placey)
-        # --X--X--X--#
-        def closing_email_error():
-            warning_win_email.destroy()
-        ####
-        warning_win_email.protocol("WM_DELETE_WINDOW", closing_email_error)
+        # #++++
+        # warning_win_email = Tk()
+        # warning_win_email.maxsize(er_w_width, er_w_height)
+        # warning_win_email.minsize(er_w_width, er_w_height)
+        # warning_win_email.title("⚠️ERROR")
+        # warning_win_email.config(padx=er_w_padx, pady=er_w_pady)
+        # #
+        # website_warning_l = Label(warning_win_email, text="Please give a proper Email", font=er_w_font)
+        # website_warning_l.place(x=er_w_placex, y=er_w_placey)
+        # # --X--X--X--#
+        # def closing_email_error():
+        #     warning_win_email.destroy()
+        # ####
+        # warning_win_email.protocol("WM_DELETE_WINDOW", closing_email_error)
+        ###############NEW pop-up setup (1.1)
+        messagebox.showerror(title="⚠️ERROR!", message="Please give a proper Email")
+        print("check2")
 
     #==========================================
     if not got_pass and not error_window_online and len(str(pass_OUTPUT)) < 4:
-        # ++++
+        # old pop-up
+        # # ++++
         error_window_online = True
-        # ++++
-        warning_win_pass = Tk()
-        warning_win_pass.maxsize(er_w_width, er_w_height)
-        warning_win_pass.minsize(er_w_width, er_w_height)
-        warning_win_pass.title("⚠️ERROR")
-        warning_win_pass.config(padx=er_w_padx, pady=er_w_pady)
-        #
-        website_warning_l = Label(warning_win_pass, text="Please give a LONGER Password", font=er_w_font)
-        website_warning_l.place(x=er_w_placex, y=er_w_placey)
-        # --X--X--X--#
-        def closing_pass_error():
-            warning_win_pass.destroy()
-        ####
-        warning_win_pass.protocol("WM_DELETE_WINDOW", closing_pass_error)
+        # # ++++
+        # warning_win_pass = Tk()
+        # warning_win_pass.maxsize(er_w_width, er_w_height)
+        # warning_win_pass.minsize(er_w_width, er_w_height)
+        # warning_win_pass.title("⚠️ERROR")
+        # warning_win_pass.config(padx=er_w_padx, pady=er_w_pady)
+        # #
+        # website_warning_l = Label(warning_win_pass, text="Please give a LONGER Password", font=er_w_font)
+        # website_warning_l.place(x=er_w_placex, y=er_w_placey)
+        # # --X--X--X--#
+        # def closing_pass_error():
+        #     warning_win_pass.destroy()
+        # ####
+        # warning_win_pass.protocol("WM_DELETE_WINDOW", closing_pass_error)
+        ###############NEW pop-up setup (1.1)
+        messagebox.showerror(title="⚠️ERROR!", message="Please give a LONGER Password")
+        print("check3")
     # +++++++++++++++++++++++++ #
     if not got_pass and not error_window_online:
-        #++++
+        # old pop-up
+        # #++++
         error_window_online = True
-        #++++
-        warning_win_pass = Tk()
-        warning_win_pass.maxsize(er_w_width, er_w_height)
-        warning_win_pass.minsize(er_w_width, er_w_height)
-        warning_win_pass.title("⚠️ERROR")
-        warning_win_pass.config(padx=er_w_padx, pady=er_w_pady)
-        #
-        website_warning_l = Label(warning_win_pass, text="Please give a proper Password", font=er_w_font)
-        website_warning_l.place(x=er_w_placex, y=er_w_placey)
-        # --X--X--X--#
-        def closing_pass_error():
-            warning_win_pass.destroy()
-        ####
-        warning_win_pass.protocol("WM_DELETE_WINDOW", closing_pass_error)
+        # #++++
+        # warning_win_pass = Tk()
+        # warning_win_pass.maxsize(er_w_width, er_w_height)
+        # warning_win_pass.minsize(er_w_width, er_w_height)
+        # warning_win_pass.title("⚠️ERROR")
+        # warning_win_pass.config(padx=er_w_padx, pady=er_w_pady)
+        # #
+        # website_warning_l = Label(warning_win_pass, text="Please give a proper Password", font=er_w_font)
+        # website_warning_l.place(x=er_w_placex, y=er_w_placey)
+        # # --X--X--X--#
+        # def closing_pass_error():
+        #     warning_win_pass.destroy()
+        # ####
+        # warning_win_pass.protocol("WM_DELETE_WINDOW", closing_pass_error)
+        ###############NEW pop-up setup (1.1)
+        messagebox.showerror(title="⚠️ERROR!", message="Please give a proper Password")
+        print("check3B")
 
     # ==========================================
     if not is_path_ready and not error_window_online:
-        #++++
-        # error_window_online = True
-        #++++
-        warning_win_path = Tk()
-        warning_win_path.maxsize(er_w_width, er_w_height)
-        warning_win_path.minsize(er_w_width, er_w_height)
-        warning_win_path.title("⚠️ERROR")
-        warning_win_path.config(padx=er_w_padx, pady=er_w_pady)
-        #
-        website_warning_l = Label(warning_win_path, text="Please select a saving folder", font=er_w_font)
-        website_warning_l.place(x=er_w_placex, y=er_w_placey)
-        # --X--X--X--#
-        def closing_path_error():
-            warning_win_path.destroy()
-        ####
-        warning_win_path.protocol("WM_DELETE_WINDOW", closing_path_error)
+        # old pop-up
+        # #++++
+        # error_window_online = True #you can activate this if you want to attach other error pop-ups in the future
+        # #++++
+        # warning_win_path = Tk()
+        # warning_win_path.maxsize(er_w_width, er_w_height)
+        # warning_win_path.minsize(er_w_width, er_w_height)
+        # warning_win_path.title("⚠️ERROR")
+        # warning_win_path.config(padx=er_w_padx, pady=er_w_pady)
+        # #
+        # website_warning_l = Label(warning_win_path, text="Please select a saving folder", font=er_w_font)
+        # website_warning_l.place(x=er_w_placex, y=er_w_placey)
+        # # --X--X--X--#
+        # def closing_path_error():
+        #     warning_win_path.destroy()
+        # ####
+        # warning_win_path.protocol("WM_DELETE_WINDOW", closing_path_error)
+        ###############NEW pop-up setup (1.1)
+        messagebox.showerror(title="⚠️ERROR!", message="Please select a saving folder")
+        print("check4")
 
 
 #==========================SAVE-BUTTON:
