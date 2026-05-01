@@ -39,7 +39,7 @@ window.config(padx=20,pady=30)
 #### - ######## - ######## - ######## - ######## - ######## - #### UI SETUP
 entry_box_width = 50
 label_displacement = -90
-entry_y_displacement = 90
+entry_y_displacement = 100
 label_spacer_value = 184
 spacer_value = 25
 
@@ -137,13 +137,30 @@ file_path = ""
 
 def browse_to_save():
     global file_path
-    ####
-    file_path = filedialog.askdirectory(
-        title="Select A Folder To Save Your Documents"
-    )
-    ####
-    browse_save_box.delete(0, END)
-    browse_save_box.insert(END, f"{file_path}")
+    global save_option
+    ########
+    #xxxxxxxxxxxxx# #CHECK SAVE-OPTION
+    save_option = save_data_menu_option.get()
+    #debug
+    print(save_option)
+    ########
+    if save_option == "Save As Text File":
+        file_path = filedialog.askdirectory(
+            title="Select A Folder To Save Your Documents"
+        )
+        ####
+        browse_save_box.delete(0, END)
+        browse_save_box.insert(END, f"{file_path}")
+    # --------------------#
+    if save_option == "Save To A Text File":
+        file_path = filedialog.askopenfilename(
+            title="Select A Text File To Save Your Info", filetypes=(('Text Files', '*.txt'),('txt Files', '*.txt'))
+        )
+        ####
+        browse_save_box.delete(0, END)
+        browse_save_box.insert(END, f"{file_path}")
+    #DEBUG
+    print(fr"{file_path}")
 
 #-------
 browse_save_l = Label(text="Save Location:", font=FONT_tuple)
@@ -337,6 +354,8 @@ def final_document_save():
     global file_path
     global path_OUTPUT
     path_OUTPUT = file_path
+    ########
+    global save_option
 
     #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~inputs check:
     if website_OUTPUT != "Ex: Blender.com" and website_OUTPUT != 0 and website_OUTPUT != "":
@@ -373,19 +392,32 @@ def final_document_save():
                                                                          f"\n\nin: {path_OUTPUT}?")
         ###############################
         if confirm_save == "yes":
-            #CHECK SAVE-OPTION
+            website_raw_name = website_OUTPUT.replace("@", "")
+            file_name_refine_1 = website_raw_name.replace(".com", "")
+            file_name_refine_2 = file_name_refine_1.replace("Ex:", "")
+            ####
+
+            #xxxxxxxxxxxxx# #CHECK SAVE-OPTION
             save_option = save_data_menu_option.get()
+            # debug
+            print(save_option)
             #xxxxxxxxxxxxx#
-            if save_option != "Save As Text File" or save_option != "Save To A Text File":
-                save_option = "Save As Text File"
-            #xxxxxxxxxxxxx#
+
             if save_option == "Save As Text File":
-                website_raw_name = website_OUTPUT.replace("@","")
-                file_name_refine_1 = website_raw_name.replace(".com", "")
-                file_name_refine_2 = file_name_refine_1.replace("Ex:", "")
-                ####
                 messagebox.showinfo(title="💾FILE SAVED!", message=f"Your info & pass were locally saved in:\n{path_OUTPUT}")
                 with open(fr"{path_OUTPUT}/{file_name_refine_2}.txt", mode="w" ) as file:
+                    file.write(f"================================\n"
+                               f"{website_OUTPUT}-Account info save:\n\n"
+                               f"Email:     | {email_OUTPUT}\n"
+                               f"Password:  | {pass_OUTPUT}\n"
+                               "=================================\n"
+                               )
+            #-------
+            if save_option == "Save To A Text File":
+                messagebox.showinfo(title="💾FILE SAVED!", message=f"Your info & pass were locally saved in:\n{path_OUTPUT}")
+                #DEBUG
+                print(fr"saved to -------> {path_OUTPUT}")
+                with open(fr"{path_OUTPUT}", mode="a" ) as file:
                     file.write(f"================================\n"
                                f"{website_OUTPUT}-Account info save:\n\n"
                                f"Email:     | {email_OUTPUT}\n"
@@ -447,15 +479,19 @@ def final_document_save():
 
 #==========================SAVE-BUTTON:
 save_data_b = Button(text="💾SAVE", font=("Times New Roma", 10, "bold"), bg="blue", fg="white",width=10,height=2,command=final_document_save)
-save_data_b.place(x=window_dim_x/4 + 60,
-                 y=window_dim_y/4 +entry_y_displacement +spacer_value*3+100)
+save_data_b.place(x=window_dim_x/4 + 140,
+                 y=window_dim_y/4 +entry_y_displacement +spacer_value*3+125)
 
 #==========================SAVE-OPTION:
 save_data_menu_option = ttk.Combobox(window, values=["Save To A Text File", "Save As Text File"], state="readonly")
-save_data_menu_option.set("Choose a save option")
+save_data_menu_option.set("Save As Text File")
 #####
-save_data_menu_option.place(x=window_dim_x/4+30,
-                 y=window_dim_y/4 +entry_y_displacement +spacer_value*3+150)
+save_data_menu_option.place(x=window_dim_x/4-40,
+                 y=window_dim_y/4 +entry_y_displacement +spacer_value*3+145)
+####
+save_data_menu_L = Label(text="Save Options:", font=FONT_tuple)
+save_data_menu_L.place(x=window_dim_x/4-40,
+                 y=window_dim_y/4 +entry_y_displacement +spacer_value*3+120)
 
 
 #===================END:
