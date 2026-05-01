@@ -6,6 +6,8 @@ from tkinter import filedialog
 import ADVANCED_Password_Generator
 #update:
 from tkinter import messagebox
+#update2:
+from tkinter import ttk
 
 #===================Global Constants
 PASS_GEN_WINDOW_Activation = False #False = 0 = OFF     True = 1 = ON
@@ -20,6 +22,8 @@ email_OUTPUT = ""
 pass_OUTPUT = ""
 #+#
 path_OUTPUT = ""
+#+#
+save_option = ""
 
 #===================SETUP
 window = Tk()
@@ -358,7 +362,9 @@ def final_document_save():
     else:
         is_path_ready = False
 
-    ## -- ----------------------------- -- ##
+    ## -- -------------SAVING STATION--------------- -- ##
+    # ---------------------------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------------
     if got_website and got_email and got_pass and is_path_ready: #IF ALL IS TRUE
         ###############################
         confirm_save = messagebox.askquestion(title="Save Info?", message=f"Confirm that you want to save the info of {website_OUTPUT}-account"
@@ -367,46 +373,32 @@ def final_document_save():
                                                                          f"\n\nin: {path_OUTPUT}?")
         ###############################
         if confirm_save == "yes":
-            website_raw_name = website_OUTPUT.replace("@","")
-            file_name_refine_1 = website_raw_name.replace(".com", "")
-            file_name_refine_2 = file_name_refine_1.replace("Ex:", "")
-            ####
-            messagebox.showinfo(title="💾FILE SAVED!", message=f"Your info & pass were locally saved in:\n{path_OUTPUT}")
-            with open(fr"{path_OUTPUT}/{file_name_refine_2}.txt", mode="w" ) as file:
-                file.write(f"================================\n"
-                           f"{website_OUTPUT}-Account info save:\n\n"
-                           f"Email:     | {email_OUTPUT}\n"
-                           f"Password:  | {pass_OUTPUT}\n"
-                           "=================================\n"
-                           )
-            #---------------------
+            #CHECK SAVE-OPTION
+            save_option = save_data_menu_option.get()
+            #xxxxxxxxxxxxx#
+            if save_option != "Save As Text File" or save_option != "Save To A Text File":
+                save_option = "Save As Text File"
+            #xxxxxxxxxxxxx#
+            if save_option == "Save As Text File":
+                website_raw_name = website_OUTPUT.replace("@","")
+                file_name_refine_1 = website_raw_name.replace(".com", "")
+                file_name_refine_2 = file_name_refine_1.replace("Ex:", "")
+                ####
+                messagebox.showinfo(title="💾FILE SAVED!", message=f"Your info & pass were locally saved in:\n{path_OUTPUT}")
+                with open(fr"{path_OUTPUT}/{file_name_refine_2}.txt", mode="w" ) as file:
+                    file.write(f"================================\n"
+                               f"{website_OUTPUT}-Account info save:\n\n"
+                               f"Email:     | {email_OUTPUT}\n"
+                               f"Password:  | {pass_OUTPUT}\n"
+                               "=================================\n"
+                               )
+
+        # ---------------------------------------------------------------------------------------------------------
+        # ---------------------------------------------------------------------------------------------------------
         elif confirm_save == "no":
             messagebox.showinfo(title="Return to editing", message="No info were saved, returning to the editing window")
 
-        ###############################
-        ###############Old pop-up setup
-        # file_saved_win = Tk()
-        # file_saved_win.maxsize(er_w_width + 40, er_w_height)
-        # file_saved_win.minsize(er_w_width + 40, er_w_height)
-        # file_saved_win.title("💾FILE SAVED!")
-        # file_saved_win.config(padx=er_w_padx, pady=er_w_pady)
-        # #
-        # file_saved_l = Label(file_saved_win, text="Your info & pass were locally saved in:", font=er_w_font)
-        # file_saved_l.place(x=er_w_placex, y=er_w_placey-22)
-        # #
-        # file_saved_entry = Entry(file_saved_win, width=er_w_height-100)
-        # file_saved_entry.insert(END, f"{path_OUTPUT}")
-        # file_saved_entry.place(x=er_w_placex, y=er_w_placey)
-        #
-        # # --X--X--X--#
-        # def closing_saved_win():
-        #     file_saved_win.destroy()
-        # ####
-        # file_saved_win.protocol("WM_DELETE_WINDOW", closing_saved_win)
-        ###############NEW pop-up setup (1.1)
-        #debug:
-        # print("check-save")
-        # print(f"{confirm_save}")
+
 
     #==========================================================================
     #======================================ERRORS:
@@ -416,20 +408,6 @@ def final_document_save():
         # #++++
         error_window_online = True
         # #++++
-        # warning_win_web = Tk()
-        # warning_win_web.maxsize(er_w_width, er_w_height)
-        # warning_win_web.minsize(er_w_width, er_w_height)
-        # warning_win_web.title("⚠️ERROR")
-        # warning_win_web.config(padx=er_w_padx, pady=er_w_pady)
-        # #----
-        # website_warning_l = Label(warning_win_web, text="Please give a proper website name", font=er_w_font)
-        # website_warning_l.place(x=er_w_placex, y=er_w_placey)
-        # # --X--X--X--#
-        # def closing_web_error():
-        #     warning_win_web.destroy()
-        # ####
-        # warning_win_web.protocol("WM_DELETE_WINDOW", closing_web_error)
-        ###############NEW pop-up setup (1.1)
         messagebox.showerror(title="⚠️ERROR!", message="Please give a proper website name")
         print("check1")
 
@@ -439,20 +417,6 @@ def final_document_save():
         # #++++
         error_window_online = True
         # #++++
-        # warning_win_email = Tk()
-        # warning_win_email.maxsize(er_w_width, er_w_height)
-        # warning_win_email.minsize(er_w_width, er_w_height)
-        # warning_win_email.title("⚠️ERROR")
-        # warning_win_email.config(padx=er_w_padx, pady=er_w_pady)
-        # #
-        # website_warning_l = Label(warning_win_email, text="Please give a proper Email", font=er_w_font)
-        # website_warning_l.place(x=er_w_placex, y=er_w_placey)
-        # # --X--X--X--#
-        # def closing_email_error():
-        #     warning_win_email.destroy()
-        # ####
-        # warning_win_email.protocol("WM_DELETE_WINDOW", closing_email_error)
-        ###############NEW pop-up setup (1.1)
         messagebox.showerror(title="⚠️ERROR!", message="Please give a proper Email")
         print("check2")
 
@@ -461,21 +425,6 @@ def final_document_save():
         # old pop-up
         # # ++++
         error_window_online = True
-        # # ++++
-        # warning_win_pass = Tk()
-        # warning_win_pass.maxsize(er_w_width, er_w_height)
-        # warning_win_pass.minsize(er_w_width, er_w_height)
-        # warning_win_pass.title("⚠️ERROR")
-        # warning_win_pass.config(padx=er_w_padx, pady=er_w_pady)
-        # #
-        # website_warning_l = Label(warning_win_pass, text="Please give a LONGER Password", font=er_w_font)
-        # website_warning_l.place(x=er_w_placex, y=er_w_placey)
-        # # --X--X--X--#
-        # def closing_pass_error():
-        #     warning_win_pass.destroy()
-        # ####
-        # warning_win_pass.protocol("WM_DELETE_WINDOW", closing_pass_error)
-        ###############NEW pop-up setup (1.1)
         messagebox.showerror(title="⚠️ERROR!", message="Please give a LONGER Password")
         print("check3")
     # +++++++++++++++++++++++++ #
@@ -484,20 +433,6 @@ def final_document_save():
         # #++++
         error_window_online = True
         # #++++
-        # warning_win_pass = Tk()
-        # warning_win_pass.maxsize(er_w_width, er_w_height)
-        # warning_win_pass.minsize(er_w_width, er_w_height)
-        # warning_win_pass.title("⚠️ERROR")
-        # warning_win_pass.config(padx=er_w_padx, pady=er_w_pady)
-        # #
-        # website_warning_l = Label(warning_win_pass, text="Please give a proper Password", font=er_w_font)
-        # website_warning_l.place(x=er_w_placex, y=er_w_placey)
-        # # --X--X--X--#
-        # def closing_pass_error():
-        #     warning_win_pass.destroy()
-        # ####
-        # warning_win_pass.protocol("WM_DELETE_WINDOW", closing_pass_error)
-        ###############NEW pop-up setup (1.1)
         messagebox.showerror(title="⚠️ERROR!", message="Please give a proper Password")
         print("check3B")
 
@@ -505,21 +440,6 @@ def final_document_save():
     if not is_path_ready and not error_window_online:
         # old pop-up
         # #++++
-        # error_window_online = True #you can activate this if you want to attach other error pop-ups in the future
-        # #++++
-        # warning_win_path = Tk()
-        # warning_win_path.maxsize(er_w_width, er_w_height)
-        # warning_win_path.minsize(er_w_width, er_w_height)
-        # warning_win_path.title("⚠️ERROR")
-        # warning_win_path.config(padx=er_w_padx, pady=er_w_pady)
-        # #
-        # website_warning_l = Label(warning_win_path, text="Please select a saving folder", font=er_w_font)
-        # website_warning_l.place(x=er_w_placex, y=er_w_placey)
-        # # --X--X--X--#
-        # def closing_path_error():
-        #     warning_win_path.destroy()
-        # ####
-        # warning_win_path.protocol("WM_DELETE_WINDOW", closing_path_error)
         ###############NEW pop-up setup (1.1)
         messagebox.showerror(title="⚠️ERROR!", message="Please select a saving folder")
         print("check4")
@@ -529,6 +449,13 @@ def final_document_save():
 save_data_b = Button(text="💾SAVE", font=("Times New Roma", 10, "bold"), bg="blue", fg="white",width=10,height=2,command=final_document_save)
 save_data_b.place(x=window_dim_x/4 + 60,
                  y=window_dim_y/4 +entry_y_displacement +spacer_value*3+100)
+
+#==========================SAVE-OPTION:
+save_data_menu_option = ttk.Combobox(window, values=["Save To A Text File", "Save As Text File"], state="readonly")
+save_data_menu_option.set("Choose a save option")
+#####
+save_data_menu_option.place(x=window_dim_x/4+30,
+                 y=window_dim_y/4 +entry_y_displacement +spacer_value*3+150)
 
 
 #===================END:
