@@ -1,4 +1,4 @@
-# Local Password Sorter 0.2.1
+# Local Password Sorter 1.2.1
 *Your own accounts-password local manager*
 
 this simple program allows you to write down the essential account info related to your various online accounts and save them as a txt files 
